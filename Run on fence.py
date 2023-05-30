@@ -88,12 +88,16 @@ def main():
     clock = pg.time.Clock()
     pg.display.set_caption("Run on Fence")
     screen = pg.display.set_mode((WIDTH, HEIGHT))
-    bg = pg.transform.rotozoom(pg.image.load("ex05/fig/background.png"), 0, 1.25)
-    
+    bg = pg.transform.rotozoom(pg.image.load("ex05/fig/background1.png"), 0, 1.25)
+
     objs = pg.sprite.Group()
     player = Player()
     
     tmr = 0
+    if tmr >= 50:
+        bg = pg.transform.rotozoom(pg.image.load("ex05/fig/background2.png"), 0, 1.25)
+    elif tmr >= 150:
+        bg = pg.transform.rotozoom(pg.image.load("ex05/fig/background3.png"), 0, 1.25)
     
     while True:
         for event in pg.event.get():
@@ -118,7 +122,7 @@ def main():
                 time.sleep(2)
                 return
         else: #hyperモードだったら
-                pass
+            pass
 
         player.update(screen)
         pg.display.update()
